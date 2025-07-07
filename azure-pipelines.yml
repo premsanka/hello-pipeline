@@ -1,0 +1,9 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo "✅ Hello! This is your first Azure Pipeline."
+  displayName: 'Run Hello Script'
