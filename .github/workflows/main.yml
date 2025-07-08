@@ -1,4 +1,4 @@
-name: hello-pipeline
+name: Conditional Check Pipeline
 
 on:
   push:
@@ -6,15 +6,17 @@ on:
       - main
 
 jobs:
-  hello-job:
+  check-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Step 1 - Checkout Code
         uses: actions/checkout@v3
 
-      - name: Say Hello
-        run: echo "✅ nenu ee line rasanu!"
-
-      - name: say one more thing
-        run: echo "iam learning github actions like a pro"
+      - name: Step 2 - Check if index.html exists
+        run: |
+          if [ -f index.html ]; then
+            echo "✅ index.html file is present!"
+          else
+            echo "❌ index.html file is missing!"
+          fi
